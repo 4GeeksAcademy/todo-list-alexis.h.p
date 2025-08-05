@@ -1,9 +1,8 @@
 import { useState } from "react"
 
-export const TodoList = () => {
+export const TodoList = ({todos}) => {
 
 const [input, setInput] = useState("")
-	const [compra, setCompra] = useState([])
 	const [hover, setHover] = useState(null)
 
 	const handleInput = (e) => {
@@ -12,12 +11,12 @@ const [input, setInput] = useState("")
 	const enviar = (e) => {
 		if (e.key === "Enter") {
 			e.preventDefault()
-			setCompra([...compra, input])
+			setCompra([...todos, input])
 			setInput("")
 		}
 	}
 	const deleteItem = (i) => {
-		let newCompra = compra.filter((_, index) => index !== i)
+		let newCompra = todos.filter((_, index) => index !== i)
 		setCompra(newCompra)
 	}
 
@@ -25,12 +24,12 @@ const [input, setInput] = useState("")
 		<div className="container">
 			<div className="mx-auto row border border-black border-1 justify-content-center" style={{ maxWidth: "800px" }}>
 
-				<h1 className="col-6 text-center">Lista de la compra</h1>
+				<h1 className="col-6 text-center">Lista de la todos</h1>
 
 
 				<input
 					className="form-control"
-					placeholder="Producto para comprar"
+					placeholder="Producto para todosr"
 					type="text"
 					style={{ width: "680px", }}
 					onKeyUp={(e) => enviar(e)}
@@ -39,9 +38,9 @@ const [input, setInput] = useState("")
 				/>
 
 				<ul className="col-8 row justify-content-center mt-3">
-					{compra.map((element, index) => (
+					{todos.map((element, index) => (
 						<div>
-							<li key={index}
+							<li key={element.id}
 								className="d-flex justify-content-between border"
 								onMouseEnter={()=>setHover(index)}
 								onMouseLeave={()=>setHover(null)}
@@ -53,8 +52,7 @@ const [input, setInput] = useState("")
 								onClick={()=>deleteItem(index)}
 								className={hover === index ? "" : "d-none"}
 								>
-									<i class="fa-solid fa-trash"></i>
-								</span>
+<button>hola</button>								</span>
 							</li>
 						</div>
 					))}
