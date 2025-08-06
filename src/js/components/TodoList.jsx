@@ -46,6 +46,7 @@ export const TodoList = ({ todos, createTodo, getTodos, deleteTodo, updateTodo }
 			}, 3000)
 		} else
 			updateTodo(id, input)
+	    setInput("")	
 		getTodos()
 		getTodos()
 
