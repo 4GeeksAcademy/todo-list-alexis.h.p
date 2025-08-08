@@ -15,6 +15,8 @@ const Home = () => {
 		const response = await fetch(url + "users/manteca")
 		if (!response.ok) {
 			console.log("usuario no encontrado")
+			createUser()
+			console.log("usuario creado")
 
 		}
 		const data = await response.json()
@@ -61,6 +63,21 @@ const Home = () => {
 	    )
 	}
 	
+	const createUser = async () =>{
+		await fetch(url + "users/manteca",{
+			method:"POST",
+			headers: {
+
+				"Content-Type": "application/json",
+
+			},
+
+
+		}
+		)
+
+
+	}
 	useEffect(() => { getTodos() }, [])
 
 

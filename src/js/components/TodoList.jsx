@@ -25,14 +25,11 @@ export const TodoList = ({ todos, createTodo, getTodos, deleteTodo, updateTodo }
 				createTodo(input)
 			setInput("")
 			getTodos()
-			getTodos()
 		}
 	}
 
 	const deleteItem = (id) => {
 		deleteTodo(id)
-		getTodos()
-		getTodos()
 		getTodos()
 	}
 
@@ -47,7 +44,6 @@ export const TodoList = ({ todos, createTodo, getTodos, deleteTodo, updateTodo }
 		} else
 			updateTodo(id, input)
 	    setInput("")	
-		getTodos()
 		getTodos()
 
 	}
