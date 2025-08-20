@@ -9,7 +9,8 @@ export const TodoList = ({ todos, createTodo, getTodos, deleteTodo, updateTodo }
 	const handleInput = (e) => {
 		setInput(e.target.value)
 	}
-	const enviar = (e) => {
+	const enviar = async (e) => {
+		
 		if (e.key === "Enter") {
 			e.preventDefault()
 
@@ -22,18 +23,18 @@ export const TodoList = ({ todos, createTodo, getTodos, deleteTodo, updateTodo }
 				}, 3000)
 			} else
 
-				createTodo(input)
+			await createTodo(input)
 			setInput("")
-			getTodos()
+			await getTodos()
 		}
 	}
 
-	const deleteItem = (id) => {
-		deleteTodo(id)
-		getTodos()
+	const deleteItem = async (id) => {
+		await deleteTodo(id)
+		await getTodos()
 	}
 
-	const updateItem = (id) => {
+	const updateItem = async (id) => {
 		if (input.trim() === "") {
 			setShow(true)
 			setTimeout(() => {
@@ -44,7 +45,7 @@ export const TodoList = ({ todos, createTodo, getTodos, deleteTodo, updateTodo }
 		} else
 			updateTodo(id, input)
 	    setInput("")	
-		getTodos()
+		await getTodos()
 
 	}
 
@@ -70,7 +71,7 @@ export const TodoList = ({ todos, createTodo, getTodos, deleteTodo, updateTodo }
 					value={input}
 					onChange={(e) => handleInput(e)}
 				/>
-
+				
 				<ul className="col-8 row justify-content-center mt-3">
 					{todos.map((element, index) => (
 						<div>
